@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:C___hess"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!--<DataTemplate DataType="{x:Type local:MainMenuViewModel}">
+            <local:MainWindow />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:GameViewModel}">
+            <local:GameView />
+        </DataTemplate>-->
     </Application.Resources>
 </Application>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using C___hess.Services;
+using C___hess.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,14 @@ namespace C___hess
         public MainWindow()
         {
             InitializeComponent();
+
+            currentDataContext.CurrentDataContext = new MainMenuViewModel();
+
+            DataContext = currentDataContext.CurrentDataContext;
         }
+
+        NavService currentDataContext = new NavService();
+
+
     }
 }
