@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using C___hess.Views;
 
 namespace C___hess
 {
@@ -26,9 +27,16 @@ namespace C___hess
         {
             InitializeComponent();
 
-            currentDataContext.CurrentDataContext = new MainMenuViewModel();
+            ContentFrame.Navigate(new MainMenuView());
 
-            DataContext = currentDataContext.CurrentDataContext;
+            //currentDataContext.CurrentDataContext = new MainMenuView(currentDataContext);
+
+            //DataContext = currentDataContext.CurrentDataContext;
+        }
+
+        public void NavigateToView(object viewModel)
+        {
+            ContentFrame.Navigate(viewModel);
         }
 
         NavService currentDataContext = new NavService();

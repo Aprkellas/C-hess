@@ -4,34 +4,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using C___hess.Services;
 using System.Windows.Navigation;
 
 namespace C___hess.ViewModels
 {
-    class BaseViewModel : INotifyPropertyChanged
+    class BaseViewModel
     {
-        protected void RaisePropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        protected void NavigateTo(string viewModelName, object parameter = null)
-        {
-            RequestNavigation?.Invoke(this, new NavigationEventArgs(viewModelName, parameter));
-        }
+        protected readonly NavService _navigationService;
 
-        public event EventHandler<NavigationEventArgs> RequestNavigation;
-        public event PropertyChangedEventHandler PropertyChanged;
-
-    }
-    public class NavigationEventArgs : EventArgs
-    {
-        public NavigationEventArgs(string viewModelName, object parameter)
+        public BaseViewModel(NavService navigationService)
         {
-            ViewModelName = viewModelName;
-            Parameter = parameter;
+            _navigationService = navigationService;
         }
-
-        public string ViewModelName { get; }
-        public object Parameter { get; }
     }
 }

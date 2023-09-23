@@ -1,4 +1,5 @@
-﻿using C___hess.ViewModels;
+﻿using C___hess.Services;
+using C___hess.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,30 @@ namespace C___hess.Views
         public MainMenuView()
         {
             InitializeComponent();
-            DataContext = new MainMenuViewModel();
+            DataContext = vm;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                switch (button.Content.ToString())
+                {
+                    case "Play":
+                        vm.Play();
+                        break;
+                    case "Instructions":
+                        vm.ShowInstructions();
+                        break;
+                    case "Quit":
+                        vm.QuitGame();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        MainMenuViewModel vm = new MainMenuViewModel();
+
     }
 }
