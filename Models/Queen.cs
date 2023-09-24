@@ -14,30 +14,7 @@ namespace C___hess.Models
             moveDist = 20;
             isDiagonal = true;
             isHorizontal = true;
-        }
-
-        public bool IsValidMove(int sourceX, int sourceY, int targetX, int targetY)
-        {
-            if (sourceX == targetX && sourceY == targetY)
-            {
-                return false;
-            }
-
-            int dx = Math.Abs(targetX - sourceX);
-            int dy = Math.Abs(targetY - sourceY);
-
-            if (dx == 0 || dy == 0 || dx == dy)
-            {
-                return true; 
-            }
-
-            return false;
-        }
-
-
-        private int moveDist;
-        private bool isDiagonal;
-        private bool isHorizontal;
+        } 
     }
    
 }
