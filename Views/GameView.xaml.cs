@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using C___hess.ViewModels;
 
 namespace C___hess.Views
 {
@@ -23,6 +24,7 @@ namespace C___hess.Views
         public GameView()
         {
             InitializeComponent();
+            DataContext = new GameViewModel();
         }
     }
 }
