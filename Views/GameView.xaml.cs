@@ -24,7 +24,10 @@ namespace C___hess.Views
         public GameView()
         {
             InitializeComponent();
-            DataContext = new GameViewModel();
+
+            Grid gamegrid = this.chessboardGrid;
+
+            DataContext = new GameViewModel(gamegrid);
         }
     }
 }

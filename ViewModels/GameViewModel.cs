@@ -1,18 +1,21 @@
-﻿using System;
+﻿using C___hess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace C___hess.ViewModels
 {
     class GameViewModel
     {
-        public GameViewModel()
+        public GameViewModel(Grid gamegrid)
         {
             // initlialise game
             LoadComponents();
+            gameGrid = gamegrid;
         }
         private void LoadComponents()
         {
@@ -32,18 +35,23 @@ namespace C___hess.ViewModels
 
             foreach (int piece in pieces)
             {
-                pieceNumb++;
                 if (pieceNumb < 32) { 
                     switch (piece)
                     {
                         case 0:
                             break;
                         case 1:
+                            Pawn pawn = new Pawn(false, pieceNumb, 1);
+                            
                             break;
                     }
+                } else
+                {
+
                 }
+                pieceNumb++;
             }
         }
-
+        public Grid gameGrid;
     }
 }
