@@ -36,7 +36,7 @@ namespace C___hess.Models
             }
             return false;
         }
-
+        
         public bool IsWhite { get; }
         private int moveDirection;
         public int X { get; set; }
@@ -46,6 +46,8 @@ namespace C___hess.Models
         public bool isDiagonal { get; set; }
         public bool isHorizontal { get; set; }
 
+        public int height = 10;
+        public int width = 10;
 
     }
 }

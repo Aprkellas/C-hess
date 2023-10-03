@@ -1,11 +1,14 @@
 ﻿using C___hess.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace C___hess.ViewModels
 {
@@ -14,10 +17,10 @@ namespace C___hess.ViewModels
         public GameViewModel(Grid gamegrid)
         {
             // initlialise game
-            LoadComponents();
+            LoadComponents(gamegrid);
             gameGrid = gamegrid;
         }
-        private void LoadComponents()
+        private void LoadComponents(Grid gameGrid)
         {
             int[,] pieces = new int[8, 8]
             {
@@ -42,7 +45,18 @@ namespace C___hess.ViewModels
                             break;
                         case 1:
                             Pawn pawn = new Pawn(false, pieceNumb, 1);
-                            
+
+                            System.Windows.Shapes.Rectangle pieceRectangle = new System.Windows.Shapes.Rectangle
+                            {
+                                Width = 50, // Set the width and height as needed
+                                Height = 50,
+                                Fill = Brushes.White, // You can set the fill colour as needed
+                            };
+
+                            Grid.SetColumn(pieceRectangle, (pieceNumb/8));
+                            Grid.SetRow(pieceRectangle, 2);
+                            gameGrid.Children.Add(pieceRectangle);
+
                             break;
                     }
                 } else
