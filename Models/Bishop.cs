@@ -8,7 +8,7 @@ namespace C___hess.Models
 {
     class Bishop : Piece
     {
-        public Bishop(bool isWhite, int x int y) : base(isWhite, x, y)
+        public Bishop(bool isWhite, int x, int y) : base(isWhite, x, y)
         {
             moveDist = 20;
             isDiagonal = true;

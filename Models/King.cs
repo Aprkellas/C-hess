@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 
 namespace C___hess.Models
 {
-    class King
+    class King : Piece
     {
-        public King() 
+        public King(bool isWhite, int x, int y) : base(isWhite, x, y)
         {
-            move_dist = 1;
-            diagonal = false;
-            horizontal = true;
+            moveDist = 1;
+            isDiagonal = true;
+            isHorizontal = true;
 
 
         }
-        private int move_dist;
-        private bool diagonal;
-        private bool horizontal;
     }
 }
