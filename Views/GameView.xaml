@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:C___hess.Views"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500">
-    <Grid Name="chessboardGrid">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -18,7 +18,7 @@
 
         <!-- Chessboard Grid -->
         <Border Grid.Row="1" Grid.Column="1" Background="White">
-            <Grid>
+            <Grid Name="chessboardGrid">
                 <!-- Create the 8x8 grid for the chessboard -->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
