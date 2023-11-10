@@ -9,11 +9,15 @@ namespace C___hess.Models
 {
     class Pawn : Piece
     {
-        public Pawn(bool isWhite, int x, int y) : base(isWhite, x, y)
+        public Pawn(bool isWhite, int x, int y, System.Windows.Shapes.Rectangle pieceRectangle) : base(isWhite, x, y)
         {
+            pawnRectanlge = pieceRectangle;
             moveDist = 1;
             isDiagonal = true;
             isHorizontal = false;
         }
+
+        public System.Windows.Shapes.Rectangle pawnRectanlge;
+
     }
 }

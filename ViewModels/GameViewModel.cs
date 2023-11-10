@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Security.RightsManagement;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -16,9 +15,12 @@ namespace C___hess.ViewModels
     {
         public GameViewModel(Grid gamegrid)
         {
-            // initlialise game
+            // initialise board
             LoadComponents(gamegrid);
             gameGrid = gamegrid;
+
+            // start gameloop
+            //GameLoop(gameGrid);
         }
         private void LoadComponents(Grid gameGrid)
         {
@@ -34,96 +36,99 @@ namespace C___hess.ViewModels
                 {4, 2, 3, 5, 6, 3, 2, 4}
             };
 
-            int pieceNumb = 0;
 
-            foreach (int piece in pieces)
+            for (int row = 0; row < pieces.GetLength(0); row++)
             {
-                if (pieceNumb < 32)
+                for (int col = 0; col < pieces.GetLength(1); col++)
                 {
-                    switch (piece)
+                    int piece = pieces[row, col];
+                    if (piece != 0)
                     {
-                        case 0:
-                            break;
-                        case 1:
-                            Pawn pawn = new Pawn(false, pieceNumb, 1);
+                        switch (piece)
+                        {
+                            case 0:
+                                break;
+                            case 1:
+                                System.Windows.Shapes.Rectangle pieceRectangle = new System.Windows.Shapes.Rectangle
+                                {
+                                    Width = 50,
+                                    Height = 50,
+                                    Fill = Brushes.Blue
+                                };
+                                Grid.SetColumn(pieceRectangle, col);
+                                Grid.SetRow(pieceRectangle, row);
 
-                            System.Windows.Shapes.Rectangle pieceRectangle = new System.Windows.Shapes.Rectangle
-                            {
-                                Width = 50,
-                                Height = 50,
-                                Fill = Brushes.Blue
-                            };
+                                gameGrid.Children.Add(pieceRectangle);
 
-                            gameGrid.Children.Add(pieceRectangle);
-                            //int column = pieces.GetValue(piece);
-                            Grid.SetColumn(pieceRectangle, (pieceNumb / 8));
-                            Grid.SetRow(pieceRectangle, 1);
+                                Pawn pawn = new Pawn(false, col, row, pieceRectangle);
 
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            Bishop bishop = new Bishop(false, pieceNumb, 0);
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                Bishop bishop = new Bishop(false, col, row);
 
-                            // add shape
+                                // add shape
 
 
-                            break;
-                        case 4:
-                            Rook rook = new Rook(false, pieceNumb, 0);
-                            break;
-                        case 5:
-                            King king = new King(false, pieceNumb, 0);
-                            break;
-                        case 6:
-                            Queen queen = new Queen(false, pieceNumb, 0);
-                            break;
+                                break;
+                            case 4:
+                                Rook rook = new Rook(false, col, row);
+                                break;
+                            case 5:
+                                King king = new King(false, col, row);
+                                break;
+                            case 6:
+                                Queen queen = new Queen(false, col, row);
+                                break;
+
+                        }
+                    }
+                    else
+                    {
+                        switch (piece)
+                        {
+                            case 0:
+                                break;
+                            case 1:
+
+                                System.Windows.Shapes.Rectangle pieceRectangle = new System.Windows.Shapes.Rectangle
+                                {
+                                    Width = 50,
+                                    Height = 50,
+                                    Fill = Brushes.Red
+                                };
+
+                                Grid.SetColumn(pieceRectangle, col);
+                                Grid.SetRow(pieceRectangle, row);
+
+                                gameGrid.Children.Add(pieceRectangle);
+
+                                Pawn pawn = new Pawn(true, col, row, pieceRectangle);
+
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                Bishop bishop = new Bishop(true, col, row);
+
+                                // add shape
+
+
+                                break;
+                            case 4:
+                                Rook rook = new Rook(true, col, row);
+                                break;
+                            case 5:
+                                King king = new King(true, col, row);
+                                break;
+                            case 6:
+                                Queen queen = new Queen(true, col, row);
+                                break;
+
+                        }
 
                     }
-                }
-                else
-                {
-                    switch (piece)
-                    {
-                        case 0:
-                            break;
-                        case 1:
-                            Pawn pawn = new Pawn(true, pieceNumb, 6);
-
-                            System.Windows.Shapes.Rectangle pieceRectangle = new System.Windows.Shapes.Rectangle
-                            {
-                                Width = 50,
-                                Height = 50,
-                                Fill = Brushes.Blue
-                            };
-
-                            gameGrid.Children.Add(pieceRectangle);
-                            //int column = pieces.GetValue(piece);
-                            Grid.SetColumn(pieceRectangle, (pieceNumb / 8));
-                            Grid.SetRow(pieceRectangle, 1);
-
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            Bishop bishop = new Bishop(true, pieceNumb, 7);
-
-                            // add shape
-
-
-                            break;
-                        case 4:
-                            Rook rook = new Rook(true, pieceNumb, 7);
-                            break;
-                        case 5:
-                            King king = new King(true, pieceNumb, 7);
-                            break;
-                        case 6:
-                            Queen queen = new Queen(true, pieceNumb, 7);
-                            break;
-
-                    }
-                    pieceNumb++;
                 }
             }
         }
