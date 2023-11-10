@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.RightsManagement;
 using System.Text;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace C___hess.ViewModels
@@ -49,11 +51,17 @@ namespace C___hess.ViewModels
                             case 0:
                                 break;
                             case 1:
+
+                                string imagePath = "../../../Content/white_pawn.png";
+                                BitmapImage bitmap = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));
+
+                                ImageBrush imageBrush = new ImageBrush(bitmap);
+
                                 System.Windows.Shapes.Rectangle pieceRectangle = new System.Windows.Shapes.Rectangle
                                 {
                                     Width = 50,
                                     Height = 50,
-                                    Fill = Brushes.Blue
+                                    Fill = imageBrush
                                 };
                                 Grid.SetColumn(pieceRectangle, col);
                                 Grid.SetRow(pieceRectangle, row);
