@@ -34,8 +34,8 @@ namespace C___hess.ViewModels
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0},
-                {1, 1, 1, 1, 1, 1, 1, 1},
-                {4, 2, 3, 5, 6, 3, 2, 4}
+                {7, 7, 7, 7, 7, 7, 7, 7},
+                {10, 8, 9, 11, 12, 9, 8, 10}
             };
 
 
@@ -52,68 +52,92 @@ namespace C___hess.ViewModels
                                 break;
                             case 1:
 
-                                string imagePath = "../../../Content/white_pawn.png";
+                                string imagePathPawn = "../../../Content/white_pawn.png";
                                 
-                                System.Windows.Shapes.Rectangle pawnPiece = GeneratePiece(imagePath, row, col, gameGrid);
+                                System.Windows.Shapes.Rectangle pawnPiece = GeneratePiece(imagePathPawn, row, col, gameGrid);
 
                                 Pawn pawn = new Pawn(false, col, row, pawnPiece);
 
                                 break;
                             case 2:
+                                //string imagePathKnight = "../../../Content/white_knight.png";
+
+                                //System.Windows.Shapes.Rectangle knightPiece = GeneratePiece(imagePathKnight, row, col, gameGrid);
+
+                                //Knight
+
                                 break;
                             case 3:
-                                string imagepath = "../../../Content/white_bishop.png";
+                                string imagepathBishop = "../../../Content/white_bishop.png";
 
-                                System.Windows.Shapes.Rectangle bishopPiece = GeneratePiece(imagepath, row, col, gameGrid);
+                                System.Windows.Shapes.Rectangle bishopPiece = GeneratePiece(imagepathBishop, row, col, gameGrid);
 
                                 Bishop bishop = new Bishop(false, col, row, bishopPiece);
 
                                 break;
                             case 4:
+                                string imagePathRook = "../../../Content/white_rook.png";
+
+                                System.Windows.Shapes.Rectangle rookPiece = GeneratePiece(imagePathRook, row, col, gameGrid);
+
                                 Rook rook = new Rook(false, col, row);
                                 break;
                             case 5:
+                                string imagePathKing = "../../../Content/white_king.png";
+
+                                System.Windows.Shapes.Rectangle kingPiece = GeneratePiece(imagePathKing, row, col, gameGrid);
+
                                 King king = new King(false, col, row);
                                 break;
                             case 6:
+                                string imagePathQueen = "../../../Content/white_queen.png";
+
+                                System.Windows.Shapes.Rectangle queenPiece = GeneratePiece(imagePathQueen, row, col, gameGrid);
+
                                 Queen queen = new Queen(false, col, row);
                                 break;
+                             case 7:
+                                 string imagePathBlackPawn = "../../../Content/black_pawn.png";
 
-                        }
-                    }
-                    else
-                    {
-                        switch (piece)
-                        {
-                            case 0:
+                                 System.Windows.Shapes.Rectangle pawnPieceBlack = GeneratePiece(imagePathBlackPawn, row, col, gameGrid);
+
+                                 Pawn pawnBlack = new Pawn(true, col, row, pawnPieceBlack);
+
+                                 break;
+                             case 8:
+                                 break;
+                             case 9:
+                                string imagepathBishopBlack = "../../../Content/black_bishop.png";
+
+                                System.Windows.Shapes.Rectangle bishopPieceBlack = GeneratePiece(imagepathBishopBlack, row, col, gameGrid);
+
+                                Bishop bishopBlack = new Bishop(true, col, row, bishopPieceBlack);
                                 break;
-                            case 1:
-                                string imagePath = "../../../Content/black_pawn.png";
+                             case 10:
+                                string imagepathRookBlack = "../../../Content/black_rook.png";
 
-                                System.Windows.Shapes.Rectangle pawnPiece = GeneratePiece(imagePath, row, col, gameGrid);
+                                System.Windows.Shapes.Rectangle rookPieceBlack = GeneratePiece(imagepathRookBlack, row, col, gameGrid);
 
-                                Pawn pawn = new Pawn(true, col, row, pawnPiece);
-
-                                break;
-                            case 2:
-                                break;
-                            case 3:
-                                //Bishop bishop = new Bishop(true, col, row);
-
-                                // add shape
-
-
-                                break;
-                            case 4:
-                                Rook rook = new Rook(true, col, row);
-                                break;
-                            case 5:
-                                King king = new King(true, col, row);
-                                break;
-                            case 6:
-                                Queen queen = new Queen(true, col, row);
+                                Rook rookBlack = new Rook(true, col, row);
                                 break;
 
+                             case 11:
+                                string imagepathKingBlack = "../../../Content/black_king.png";
+
+                                System.Windows.Shapes.Rectangle kingPieceBlack = GeneratePiece(imagepathKingBlack, row, col, gameGrid);
+
+                                King kingBlack = new King(true, col, row);
+                                break;
+
+                             case 12:
+                                string imagepathQueenBlack = "../../../Content/black_queen.png";
+
+                                System.Windows.Shapes.Rectangle queenPieceBlack = GeneratePiece(imagepathQueenBlack, row, col, gameGrid);
+
+                                Queen queenBlack = new Queen(true, col, row);
+                                 break;
+
+                     
                         }
 
                     }
