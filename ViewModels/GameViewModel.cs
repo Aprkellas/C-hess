@@ -53,31 +53,20 @@ namespace C___hess.ViewModels
                             case 1:
 
                                 string imagePath = "../../../Content/white_pawn.png";
-                                BitmapImage bitmap = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));
+                                
+                                System.Windows.Shapes.Rectangle pawnPiece = GeneratePiece(imagePath, row, col, gameGrid);
 
-                                ImageBrush imageBrush = new ImageBrush(bitmap);
-
-                                System.Windows.Shapes.Rectangle pieceRectangle = new System.Windows.Shapes.Rectangle
-                                {
-                                    Width = 50,
-                                    Height = 50,
-                                    Fill = imageBrush
-                                };
-                                Grid.SetColumn(pieceRectangle, col);
-                                Grid.SetRow(pieceRectangle, row);
-
-                                gameGrid.Children.Add(pieceRectangle);
-
-                                Pawn pawn = new Pawn(false, col, row, pieceRectangle);
+                                Pawn pawn = new Pawn(false, col, row, pawnPiece);
 
                                 break;
                             case 2:
                                 break;
                             case 3:
-                                Bishop bishop = new Bishop(false, col, row);
+                                string imagepath = "../../../Content/white_bishop.png";
 
-                                // add shape
+                                System.Windows.Shapes.Rectangle bishopPiece = GeneratePiece(imagepath, row, col, gameGrid);
 
+                                Bishop bishop = new Bishop(false, col, row, bishopPiece);
 
                                 break;
                             case 4:
@@ -99,26 +88,17 @@ namespace C___hess.ViewModels
                             case 0:
                                 break;
                             case 1:
+                                string imagePath = "../../../Content/black_pawn.png";
 
-                                System.Windows.Shapes.Rectangle pieceRectangle = new System.Windows.Shapes.Rectangle
-                                {
-                                    Width = 50,
-                                    Height = 50,
-                                    Fill = Brushes.Red
-                                };
+                                System.Windows.Shapes.Rectangle pawnPiece = GeneratePiece(imagePath, row, col, gameGrid);
 
-                                Grid.SetColumn(pieceRectangle, col);
-                                Grid.SetRow(pieceRectangle, row);
-
-                                gameGrid.Children.Add(pieceRectangle);
-
-                                Pawn pawn = new Pawn(true, col, row, pieceRectangle);
+                                Pawn pawn = new Pawn(true, col, row, pawnPiece);
 
                                 break;
                             case 2:
                                 break;
                             case 3:
-                                Bishop bishop = new Bishop(true, col, row);
+                                //Bishop bishop = new Bishop(true, col, row);
 
                                 // add shape
 
@@ -139,6 +119,26 @@ namespace C___hess.ViewModels
                     }
                 }
             }
+        }
+        private System.Windows.Shapes.Rectangle GeneratePiece(string filepath, int row, int col, Grid gameGrid)
+        {
+            BitmapImage bitmap = new BitmapImage(new Uri(filepath, UriKind.RelativeOrAbsolute));
+
+            ImageBrush imageBrush = new ImageBrush(bitmap);
+
+            System.Windows.Shapes.Rectangle pieceRectangle = new System.Windows.Shapes.Rectangle
+            {
+                Width = 50,
+                Height = 50,
+                Fill = imageBrush
+            };
+            Grid.SetColumn(pieceRectangle, col);
+            Grid.SetRow(pieceRectangle, row);
+
+            gameGrid.Children.Add(pieceRectangle);
+
+            return pieceRectangle;
+
         }
         public Grid gameGrid;
     }
