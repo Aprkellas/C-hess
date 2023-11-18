@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.RightsManagement;
 using System.Text;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -15,6 +16,10 @@ namespace C___hess.ViewModels
 {
     class GameViewModel
     {
+        public Grid gameGrid;
+        public bool player1Move;
+        public bool player2Move;
+
         public GameViewModel(Grid gamegrid)
         {
             // initialise board
@@ -22,8 +27,15 @@ namespace C___hess.ViewModels
             gameGrid = gamegrid;
 
             // start gameloop
-            //GameLoop(gameGrid);
+            GameLoop(gameGrid);
         }
+
+        private void GameLoop(Grid gameGrid)
+        {
+            player1Move = true;
+            player2Move = false;
+        }
+
         private void LoadComponents(Grid gameGrid)
         {
             int[,] pieces = new int[8, 8]
@@ -164,6 +176,5 @@ namespace C___hess.ViewModels
             return pieceRectangle;
 
         }
-        public Grid gameGrid;
     }
 }
